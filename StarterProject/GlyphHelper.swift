@@ -22,7 +22,8 @@ class GlyphHelper{
     guard let hexColor = hexStringFrom(color: color) else{
       return nil
     }
-
+    
+    
     if let image = imageCache[glyph.hashValue]{
       return image
     }
@@ -36,11 +37,13 @@ class GlyphHelper{
     let filePath = tempURL.absoluteString
     
     if !FileManager.default.fileExists(atPath: filePath), let selectedFont = UIFont(name: font.rawValue, size: fontSize){
-      // No cached icon exists, we need to create it and persist to disk
-  
-       let attributedString = NSAttributedString(string: glyph.rawValue, attributes: [NSAttributedStringKey.font: selectedFont, NSAttributedStringKey.foregroundColor: color])
-
       
+      // No cached icon exists, we need to create it and persist to disk
+      var attributes = [NSAttributedStringKey: AnyObject]()
+      attributes[.font] = selectedFont
+      
+      attributes[.foregroundColor] = UIColor.green
+      let attributedString = NSAttributedString(string: glyph.rawValue, attributes: attributes)
       let iconSize = attributedString.size()
       
       UIGraphicsBeginImageContextWithOptions(iconSize, false, 0.0)
@@ -101,7 +104,6 @@ class GlyphHelper{
     let red = lroundf(floatComponents[0] * 255)
     let green = lroundf(floatComponents[1] * 255)
     let blue = lroundf(floatComponents[2] * 255)
-
     return String(format: "#%02lX%02lX%02lX", red, green, blue)
   }
   

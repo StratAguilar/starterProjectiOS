@@ -21,8 +21,9 @@ class HomeViewController: UIViewController, Identifiable {
 
   override func viewDidLoad() {
       super.viewDidLoad()
-    let testImage = GlyphHelper(font: .ionic).getImage(glyph: .camera, fontSize: 100, color: .red)
+    let testImage = GlyphHelper(font: .ionic).getImage(glyph: .camera, fontSize: 100, color: .black)
     testButton?.setImage(testImage, for: .normal)
+    testButton?.tintColor = .white
   }
   
 }
