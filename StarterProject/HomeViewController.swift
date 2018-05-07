@@ -9,8 +9,7 @@
 import UIKit
 
 class HomeViewController: UIViewController, Identifiable {
-  
-  @IBOutlet weak var testButton: UIButton?
+
   init(){
     super.init(nibName: HomeViewController.identifier, bundle: nil)
   }
@@ -21,10 +20,6 @@ class HomeViewController: UIViewController, Identifiable {
 
   override func viewDidLoad() {
       super.viewDidLoad()
-    let ionicGlyphs = IonicGlyph()
-    let testImage = ionicGlyphs.getImage(glyph: .camera, fontSize: 100, color: .black)
-    testButton?.setImage(testImage, for: .normal)
-    testButton?.tintColor = .white
   }
   
 }

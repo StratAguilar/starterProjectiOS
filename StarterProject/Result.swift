@@ -11,10 +11,19 @@ import Foundation
 enum Result<Value, Err: Error>{
   case success(Value)
   case failure(Error)
-}
-
-struct StringError: Error{
   
+  var isSucces: Bool {
+    get {
+      switch self {
+      case .success(_):
+        return true
+      case .failure(_):
+        return false
+      }
+    }
+  }
+  
+  var isFailure: Bool {
+    return !isSucces
+  }
 }
-
-let result = Result<String, StringError>.success("sdfsd")
